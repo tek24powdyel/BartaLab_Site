@@ -34,6 +34,7 @@
             align-items: center;
             font-size: 24px;
             font-weight: bold;
+            cursor: pointer; /* Makes the logo clickable */
         }
         .logo-img {
             height: 40px;
@@ -105,62 +106,158 @@
             padding: 10px 30px;
             box-sizing: border-box;
         }
+        .description {
+            display: none;
+            padding: 20px;
+            text-align: left;
+           
+           /* border-radius: 10px; */
+            margin-top: 30px;
+            margin-left: 50px;
+        }
+        
+    .description h2 {
+    position: fixed;
+    top: 30px; /* Adjust based on your header height */
+    left: 50px;
+    right: 200px;
+    
+    padding: 10px;
+    z-index: 1000;
+    border-radius: 5px;
+}
+
+        .description p {
+            position: relative;
+            background: rgba(255, 255, 255, 0.2); 
+            border-radius: 10px;
+            margin-left: 80px;
+            margin-top: 50px;
+           
+            padding-bottom: 1100px;
+            padding-top: 20px;
+            padding-left: 20px;
+            text-align: left; 
+            
+        }
+
     </style>
 </head>
 <body>
     <header class="header">
-        <div class="logo">
+        <div class="logo" onclick="goHome()"> <!-- Add onclick here -->
             <img src="IMAGES\EXTRACT_HERE\Blue Abstract Circle Global Tech Logo\LG1.png" alt="Logo" class="logo-img">
             BartaLab
         </div>
         <div class="navbar">
-            <a href="#home">Home</a>
+            <a href="javascript:void(0);" onclick="goHome()">Home</a>
             <a href="#about">About</a>
-            <a href="#content">Content</a>
-            <a href="#others">Others</a>
+            <a href="#diagnostics">Diagnostics</a>
+            <a href="#suggestions">Suggestions</a>
         </div>
     </header>
-    <div class="container">
-        <a href="siemens.html" class="button-link">
+    <div class="container" id="content-container">
+        <a href="javascript:void(0);" onclick="showDescription('siemens')" class="button-link">
             <div class="main_buttons">
                 <img class="main_buttons_img" src="IMAGES\EXTRACT_HERE\Blue Abstract Circle Global Tech Logo\SM1.png" alt="SIEMENS">
                 <div class="image_title">SIEMENS</div>
             </div>
         </a>
-        <a href="allen_bradley.html" class="button-link">
+        <a href="javascript:void(0);" onclick="showDescription('allen-bradley')" class="button-link">
             <div class="main_buttons">
                 <img class="main_buttons_img" src="IMAGES\EXTRACT_HERE\Blue Abstract Circle Global Tech Logo\AB1.png" alt="ALLEN BRADLEY">
                 <div class="image_title">ALLEN BRADLEY</div>
             </div>
         </a>
-        <a href="fanuc_robot.html" class="button-link">
+        <a href="javascript:void(0);" onclick="showDescription('fanuc')" class="button-link">
             <div class="main_buttons">
                 <img class="main_buttons_img" src="IMAGES/EXTRACT_HERE/Blue Abstract Circle Global Tech Logo/FR1.png" alt="FANUC ROBOT">
                 <div class="image_title">FANUC ROBOT</div>
             </div>
         </a>
-        <a href="vision_system.html" class="button-link">
+        <a href="javascript:void(0);" onclick="showDescription('vision-system')" class="button-link">
             <div class="main_buttons">
                 <img class="main_buttons_img" src="IMAGES/EXTRACT_HERE/Blue Abstract Circle Global Tech Logo/VS1.png" alt="VISION SYSTEM">
                 <div class="image_title">VISION SYSTEM</div>
             </div>
         </a>
-        <a href="networking.html" class="button-link">
+        <a href="javascript:void(0);" onclick="showDescription('networking')" class="button-link">
             <div class="main_buttons">
                 <img class="main_buttons_img" src="IMAGES\EXTRACT_HERE\Blue Abstract Circle Global Tech Logo\NW1.png" alt="NETWORKING">
                 <div class="image_title">NETWORKING</div>
             </div>
         </a>
-        <a href="backup_restore.html" class="button-link">
+        <a href="javascript:void(0);" onclick="showDescription('backup-restore')" class="button-link">
             <div class="main_buttons">
                 <img class="main_buttons_img" src="IMAGES\EXTRACT_HERE\Blue Abstract Circle Global Tech Logo\BR1.png" alt="BACKUP & RESTORE">
                 <div class="image_title">BACKUP & RESTORE</div>
             </div>
         </a>
     </div>
+    
+    <div id="siemens-description" class="description">
+        <h2>SIEMENS</h2>
+        <p>This is a description of the SIEMENS system, explaining its features and usage.</p>
+    </div>
+    
+    <div id="allen-bradley-description" class="description">
+        <h2>ALLEN BRADLEY</h2>
+        <p>This is a description of the ALLEN BRADLEY system, explaining its features and usage.</p>
+    </div>
+    
+    <div id="fanuc-description" class="description">
+        <h2>FANUC ROBOT</h2>
+        <p>This is a description of the FANUC ROBOT system, explaining its features and usage.</p>
+    </div>
+    
+    <div id="vision-system-description" class="description">
+        <h2>VISION SYSTEM</h2>
+        <p>This is a description of the VISION SYSTEM, explaining its features and usage.</p>
+    </div>
+    
+    <div id="networking-description" class="description">
+        <h2>NETWORKING</h2>
+        <p>This is a description of the NETWORKING system, explaining its features and usage.</p>
+    </div>
+    
+    <div id="backup-restore-description" class="description">
+        <h2>BACKUP & RESTORE</h2>
+        <p>This is a description of the BACKUP & RESTORE system, explaining its features and usage.</p>
+    </div>
+
     <footer class="footer">
         <p style="margin: 0; text-align: left; flex: 1;">www.bartalab.com</p>
         <p style="margin: 0; text-align: right; flex: 1;">abcxyz@gmail.com</p>
     </footer>
+
+    <script>
+        function showDescription(id) {
+            // Hide all descriptions
+            const descriptions = document.querySelectorAll('.description');
+            descriptions.forEach(desc => {
+                desc.style.display = 'none';
+            });
+
+            // Show the clicked description
+            const selectedDescription = document.getElementById(id + '-description');
+            if (selectedDescription) {
+                selectedDescription.style.display = 'block';
+            }
+
+            // Hide the main content in the container
+            document.getElementById('content-container').style.display = 'none';
+        }
+
+        function goHome() {
+            // Hide all descriptions
+            const descriptions = document.querySelectorAll('.description');
+            descriptions.forEach(desc => {
+                desc.style.display = 'none';
+            });
+
+            // Show the main content again
+            document.getElementById('content-container').style.display = 'flex';
+        }
+    </script>
 </body>
 </html>
