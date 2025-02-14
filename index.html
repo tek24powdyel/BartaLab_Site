@@ -28,13 +28,14 @@
             top: 0;
             left: 0;
             z-index: 1000;
+            
         }
         .logo {
             display: flex;
             align-items: center;
             font-size: 24px;
             font-weight: bold;
-            cursor: pointer; /* Makes the logo clickable */
+            cursor: pointer;
         }
         .logo-img {
             height: 40px;
@@ -44,12 +45,52 @@
         }
         .navbar {
             display: flex;
+            align-items: center;
         }
         .navbar a {
             color: white;
             margin: 0 15px;
             text-decoration: none;
             font-weight: bold;
+            text-transform: uppercase;
+            padding: 10px;
+            transition: background-color 0.3s;
+        }
+        .navbar a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+        .menu-icon {
+            display: none;
+            cursor: pointer;
+        }
+        .menu-icon div {
+            width: 30px;
+            height: 4px;
+            background-color: white;
+            margin: 6px 0;
+            transition: 0.4s;
+        }
+        .navbar-links {
+            display: flex;
+        }
+        .navbar.active .navbar-links {
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+        .navbar.active .menu-icon div:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+        .navbar.active .menu-icon div:nth-child(2) {
+            opacity: 0;
+        }
+        .navbar.active .menu-icon div:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+        .navbar-links a {
+            display: block;
+            margin: 10px 0;
         }
         .container {
             display: flex;
@@ -65,7 +106,7 @@
             margin: 20px;
             text-align: center;
             position: relative;
-            background: rgba(255, 255, 255, 0.2); 
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 10px;
             overflow: hidden;
             cursor: pointer;
@@ -89,11 +130,11 @@
         .image_title {
             position: absolute;
             bottom: 0;
-            width: 100%; 
+            width: 100%;
             color: white;
             padding: 10px 0;
             font-weight: bold;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); 
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
         }
         .footer {
             padding: 10px;
@@ -110,50 +151,57 @@
             display: none;
             padding: 20px;
             text-align: left;
-           
-           /* border-radius: 10px; */
             margin-top: 30px;
             margin-left: 50px;
         }
-        
-    .description h2 {
-    position: fixed;
-    top: 30px; /* Adjust based on your header height */
-    left: 50px;
-    right: 200px;
-    
-    padding: 10px;
-    z-index: 1000;
-    border-radius: 5px;
-}
-
+        .description h2 {
+            position: fixed;
+            top: 30px;
+            left: 50px;
+            right: 200px;
+            padding: 10px;
+            z-index: 1000;
+            border-radius: 5px;
+        }
         .description p {
             position: relative;
-            background: rgba(255, 255, 255, 0.2); 
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 10px;
             margin-left: 80px;
             margin-top: 50px;
-           
             padding-bottom: 1100px;
             padding-top: 20px;
             padding-left: 20px;
-            text-align: left; 
-            
+            text-align: left;
         }
-
+        @media (max-width: 768px) {
+            .navbar-links {
+                display: none;
+            }
+            .menu-icon {
+                display: block;
+            }
+        }
     </style>
 </head>
 <body>
     <header class="header">
-        <div class="logo" onclick="goHome()"> <!-- Add onclick here -->
+        <div class="logo" onclick="goHome()"> 
             <img src="IMAGES\EXTRACT_HERE\Blue Abstract Circle Global Tech Logo\LG1.png" alt="Logo" class="logo-img">
             BartaLab
         </div>
         <div class="navbar">
-            <a href="javascript:void(0);" onclick="goHome()">Home</a>
-            <a href="#about">About</a>
-            <a href="#diagnostics">Diagnostics</a>
-            <a href="#suggestions">Suggestions</a>
+            <div class="menu-icon" onclick="toggleNavbar()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="navbar-links">
+                <a href="javascript:void(0);" onclick="goHome()">Home</a>
+                <a href="javascript:void(0);" onclick="showDescription('diagnostics')">Diagnostics</a>
+                <a href="#about">About</a>
+                <a href="#suggestions">Suggestions</a>
+            </div>
         </div>
     </header>
     <div class="container" id="content-container">
@@ -192,14 +240,14 @@
                 <img class="main_buttons_img" src="IMAGES\EXTRACT_HERE\Blue Abstract Circle Global Tech Logo\BR1.png" alt="BACKUP & RESTORE">
                 <div class="image_title">BACKUP & RESTORE</div>
             </div>
-        </a>
+        </a> 
+        
     </div>
-    
     <div id="siemens-description" class="description">
         <h2>SIEMENS</h2>
         <p>This is a description of the SIEMENS system, explaining its features and usage.</p>
     </div>
-    
+
     <div id="allen-bradley-description" class="description">
         <h2>ALLEN BRADLEY</h2>
         <p>This is a description of the ALLEN BRADLEY system, explaining its features and usage.</p>
@@ -225,38 +273,50 @@
         <p>This is a description of the BACKUP & RESTORE system, explaining its features and usage.</p>
     </div>
 
+    <!-- Add Diagnostics description -->
+    <div id="diagnostics-description" class="description">
+        <h2>Diagnostics</h2>
+        <p>This is the description for Diagnostics, explaining the tools and features for troubleshooting and system analysis.</p>
+    </div>
     <footer class="footer">
         <p style="margin: 0; text-align: left; flex: 1;">www.bartalab.com</p>
         <p style="margin: 0; text-align: right; flex: 1;">abcxyz@gmail.com</p>
     </footer>
-
     <script>
         function showDescription(id) {
-            // Hide all descriptions
             const descriptions = document.querySelectorAll('.description');
             descriptions.forEach(desc => {
                 desc.style.display = 'none';
             });
 
-            // Show the clicked description
             const selectedDescription = document.getElementById(id + '-description');
             if (selectedDescription) {
                 selectedDescription.style.display = 'block';
             }
 
-            // Hide the main content in the container
             document.getElementById('content-container').style.display = 'none';
+
+            // Close the menu dropdown after clicking any link
+            const navbar = document.querySelector('.navbar');
+            navbar.classList.remove('active');
         }
 
         function goHome() {
-            // Hide all descriptions
             const descriptions = document.querySelectorAll('.description');
             descriptions.forEach(desc => {
                 desc.style.display = 'none';
             });
 
-            // Show the main content again
             document.getElementById('content-container').style.display = 'flex';
+
+            // Close the menu dropdown after going to home
+            const navbar = document.querySelector('.navbar');
+            navbar.classList.remove('active');
+        }
+
+        function toggleNavbar() {
+            const navbar = document.querySelector('.navbar');
+            navbar.classList.toggle('active');
         }
     </script>
 </body>
