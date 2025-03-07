@@ -149,10 +149,14 @@
         }
         .description {
             display: none;
-            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            margin-left: 80px;
+            margin-top: 90px;
+            padding-bottom: 1100px; 
+            padding-top: 10px;
+            padding-left: 20px;
             text-align: left;
-            margin-top: 30px;
-            margin-left: 50px;
         }
         .description h2 {
             position: fixed;
@@ -162,18 +166,9 @@
             padding: 10px;
             z-index: 1000;
             border-radius: 5px;
-        }
-        .description p {
-            position: relative;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            margin-left: 80px;
-            margin-top: 50px;
-            padding-bottom: 1100px;
-            padding-top: 20px;
-            padding-left: 20px;
-            text-align: left;
-        }
+        } 
+    
+
         @media (max-width: 768px) {
             .navbar-links {
                 display: none;
@@ -249,7 +244,45 @@
     </div>
     <div id="siemens-description" class="description">
         <h2>SIEMENS</h2>
-        <p>This is a description of the SIEMENS system, explaining its features and usage.</p>
+        
+        <h3>Topic: Setting Up the Keyence GV-H1000 Sensor with GV-21P Amplifier</h3>
+
+        <h4>Introduction</h4>
+        <p>The Keyence GV-H1000 sensor is commonly used in automation to monitor the presence of critical machine components. For example, in a deburring machine, if the brush falls off the spindle, the sensor can automatically detect its absence without requiring an operator to periodically check the machine. This ensures process reliability and minimizes downtime.</p>
+        
+        <h4>List of Required Hardware</h4>
+        <p>GV-H1000 Laser Sensor</p>
+        <p>GV-21P Amplifier</p>
+        <p>PLC (optional)</p>
+        <p>24VDC Power Supply</p>
+        
+        <h4>Step 1: Hardware Connection</h4>
+        <p>Connect the GV-H1000 Laser Sensor to the GV-21P Amplifier. (Refer to Images 1.0 & 1.2)</p>
+        
+        <h4>Step 2: Wiring Configuration</h4>
+        <p>(Refer to Image 1.3)</p>
+        <p>Connect the Brown wire to +24VDC.</p>
+        <p>Connect the Blue wire to 0VDC.</p>
+        <p>Connect the Black wire (Out 1) to a PLC input.</p>
+        
+        <h4>Step 3: Calibration and Programming</h4>
+        <p>Position the GV-H1000 sensor in the desired mounting location without an object present. (Refer to image 1.4, laser is not pointing to any object)</p>
+        <p>Press the SET button on the GV-21P amplifier.</p>
+        <p>Keeping the sensor in the same position and introduce the object to be detected. (Refer to image 1.5, here I introduced a box as a part for demo. Use the object of your desire)</p>
+        <p>Press the SET button again on the amplifier.</p>
+        
+        <h4>Step 4: Programming in PLC (optional)</h4>
+        <p>Set the input and output logic as needed. Refer to image 1.6 for a simple demo to turn output Q124.2 if object detection occurs.</p>
+        
+        <h4>Step 6: Test Results</h4>
+        <p>Confirm that the ‘OUT’ LED on the sensor turns ON as it detects the object. (Refer to image 1.7)</p>
+        <p>Confirm that the ‘OUT’ LED on the sensor turns OFF as the object is being removed. (Refer to image 1.8)</p>
+        <p>Check if the PLC input I124.0 and output Q124.2 are activated/deactivated as intended. (Refer to Image 1.9)</p>
+        
+
+
+
+
     </div>
 
     <div id="allen-bradley-description" class="description">
